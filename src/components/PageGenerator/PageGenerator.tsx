@@ -1,5 +1,4 @@
 import { Button, Card, Icon, IModalRef, Input, Modal } from 'forging-react';
-import { nanoid } from 'nanoid';
 import React, { useMemo, useRef, useState } from 'react';
 import ComponentSelector from '../ComponentSelector';
 
@@ -11,7 +10,6 @@ const PageGenerator = React.memo(() => {
 
         setRows(r => {
             const t = Object.assign([], r);
-            t.push(nanoid())
             return t;
         })
     }

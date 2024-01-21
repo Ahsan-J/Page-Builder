@@ -1,6 +1,6 @@
 import { dispatchAPI, IApiParam } from "../helper/api";
-import { setAuthUser } from "../redux/actions/auth";
-import { AppThunkDispatch } from "../redux/types";
+import { setAuthUser } from "../redux/auth/auth.action";
+import { AppThunkDispatch } from "../redux";
 
 /**********************************************************************************************/
 

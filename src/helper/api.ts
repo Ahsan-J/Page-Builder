@@ -1,6 +1,6 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from 'axios';
-import { setAuthUser } from '../redux/actions/auth';
-import { AppThunkDispatch, RootState } from '../redux/types';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { setAuthUser } from '../redux/auth/auth.action';
+import { AppThunkDispatch, RootState } from '../redux';
 import { urlRegex } from "./regex";
 import { getFormData } from './utility';
 

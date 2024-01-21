@@ -1,67 +1,39 @@
-import moment from 'moment';
+'use client'
+
 import { NextPage } from 'next';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppThunkDispatch } from '../redux/types';
-import styles from '../styles/Login.module.css';
-import { Input, Button, IButtonRef, Video, Spinner } from 'forging-react';
-import { login } from '../api/auth';
-// import '../../public/css/bootstrap.min.css';
-// import ReactPlayer from 'react-player';
+import { AppThunkDispatch } from '@/redux';
+import styles from './login.module.css';
+import { Input, Button, Image } from 'forging-react';
+import { login } from '../../api/auth';
 
 const Login: NextPage = () => {
   const dispatch = useDispatch<AppThunkDispatch>();
-  const formRef = useRef<HTMLFormElement>(null);
-  const loginBtn = useRef<HTMLButtonElement & IButtonRef>(null);
-  const [isLoading, setLoading] = useState<Boolean>(false);
-  const onLogin: React.FormEventHandler = useCallback(
-    async (e) => {
-      setLoading(true);
-      if (formRef.current) {
+
+  const onLogin: React.FormEventHandler<HTMLFormElement> = useCallback(async (e) => {
+    e.preventDefault();
+      if (e.currentTarget) {
         try {
           const params = {
-            data: new FormData(formRef.current),
+            data: new FormData(e.currentTarget),
           };
           const response = await dispatch(login(params));
-          setLoading(false);
         } catch (e: unknown) {
           console.error(e);
-          setLoading(false);
         }
       }
     },
     [dispatch]
   );
-  if (isLoading) {
-    return (
-      <div
-        className="d-flex justify-cntent-center align-items-center"
-        style={{ height: '100vh' }}
-      >
-        <Spinner loader />
-      </div>
-    );
-  }
+
   return (
     <div className={styles.mainlogindiv}>
-      <video
-        loop
-        autoPlay
-        muted
-        src={'/videos/bgvideo.mp4'}
-        style={{
-          position: 'absolute',
-          zIndex: '-1',
-          width: '100%',
-          objectFit: 'cover',
-          height: '100%',
-        }}
-      />
 
       <div className="container">
         <div className="row mt-5 mb-5">
           <div className="text-center">
-            <img
+            <Image
               className="logo-img"
               src={'images/arc-logo.gif'}
               style={{ width: '15%' }}
@@ -72,14 +44,15 @@ const Login: NextPage = () => {
         <div className="row" style={{ marginTop: '100px' }}>
           <div className="col-lg-2"></div>
           <div className={`col-lg-3 ${styles.logimgdiv}`}>
-            <img
+            <Image
               src="/images/minibot.png"
               className="img-fluid"
               style={{ height: '400px' }}
+              alt=""
             />
           </div>
           <div className={`col-lg-5 ${styles.formdiv}`}>
-            <form ref={formRef} onSubmit={onLogin} className={styles.loginform}>
+            <form onSubmit={onLogin} className={styles.loginform}>
               <div className="row">
                 <div className="col-lg-12">
                   <h5 className={`text-center ${styles.loginsigninheading}`}>
@@ -117,7 +90,7 @@ const Login: NextPage = () => {
                       name="password"
                       defaultValue="aicrm2022"
                       htmlType="password"
-                      type="floating"
+                      floating
                     />
                   </div>
                 </div>
@@ -130,9 +103,7 @@ const Login: NextPage = () => {
                       {' '}
                       <Button
                         className={styles.loginbtn}
-                        htmlType="button"
-                        ref={loginBtn}
-                        onClick={onLogin}
+                        htmlType="submit"
                       >
                         Login
                       </Button>
