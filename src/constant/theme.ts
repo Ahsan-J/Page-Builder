@@ -1,14 +1,14 @@
 const theme = {
     backgroundColor: {
-        primary: "#EC174D",
-        secondary: "#C81443",
-        success: "#32A852",
-        info: "#4DECE7",
-        warning: "#EC8D17",
-        danger: "#9C0932",
-        light: "#f5f5f5",
-        dark: "#760624",
-        link: "#0A86FF",
+        primary: "#2196f3",
+        secondary: "#ffffff",
+        success: "#4caf50",
+        info: "#9c27b0",
+        warning: "#ff9800",
+        danger: "#e51c23",
+        light: "#f8f9fa",
+        dark: "#222222",
+        link: "#2196f3",
     },
     get borderColor() {
         return this.backgroundColor;

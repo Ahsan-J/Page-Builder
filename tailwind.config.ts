@@ -13,6 +13,7 @@ const config: Config = {
       outlineColor: theme.outlineColor,
       fontSize: theme.fontSize,
       gradientColorStops: theme.backgroundColor,
+      boxShadowColor: theme.borderColor,
     },
     screens: {
       'xxs': '340px',
