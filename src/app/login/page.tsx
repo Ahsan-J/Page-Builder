@@ -28,95 +28,18 @@ const Login: NextPage = () => {
   );
 
   return (
-    <div className={styles.mainlogindiv}>
-
-      <div className="container">
-        <div className="row mt-5 mb-5">
-          <div className="text-center">
-            <Image
-              className="logo-img"
-              src={'images/arc-logo.gif'}
-              style={{ width: '15%' }}
-              alt=""
-            />
-          </div>
+    <div className='h-dvh w-dvw bg-light flex flex-row items-center justify-center'>
+      <form className='h-[30rem] w-[25rem] shadow-lg shadow-gray-300 flex flex-col justify-between px-6 py-12'>
+        <Image className='!w-60 !h-min self-center' src="/ba9a7cbd.jpg" alt="main_logo" />
+        <div className='flex flex-col'>
+          <Input floating label='Email address'/>
+          <Input floating label='Password'/>
         </div>
-        <div className="row" style={{ marginTop: '100px' }}>
-          <div className="col-lg-2"></div>
-          <div className={`col-lg-3 ${styles.logimgdiv}`}>
-            <Image
-              src="/images/minibot.png"
-              className="img-fluid"
-              style={{ height: '400px' }}
-              alt=""
-            />
-          </div>
-          <div className={`col-lg-5 ${styles.formdiv}`}>
-            <form onSubmit={onLogin} className={styles.loginform}>
-              <div className="row">
-                <div className="col-lg-12">
-                  <h5 className={`text-center ${styles.loginsigninheading}`}>
-                    <span style={{ color: 'white', fontWeight: '300' }}>
-                      {' '}
-                      Welcome to The
-                    </span>{' '}
-                    ARC-CRM
-                  </h5>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-10">
-                  <div style={{ marginLeft: '60px' }}>
-                    <label className={styles.inputlabel}>Email</label>
-                    <Input
-                      className={styles.inputfield}
-                      name="email"
-                      defaultValue="admin@ai.com"
-                      htmlType="email"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="row" style={{marginTop:'30px'}}>
-                <div className={`col-lg-10 ${styles.abcdef}`}>
-                  <div style={{ marginLeft: '60px' }}>
-                    <label className={styles.inputlabel}
-                      style={{borderBottom:"none"}}
-                    >Password</label>
-                    <Input
-                      className={styles.inputfield}
-                      name="password"
-                      defaultValue="aicrm2022"
-                      htmlType="password"
-                      floating
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="row mt-4">
-                <div className="col-lg-10">
-                  <div style={{ marginLeft: '60px' }}>
-                    <div className="text-center">
-                      {' '}
-                      <Button
-                        className={styles.loginbtn}
-                        htmlType="submit"
-                      >
-                        Login
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div className="col-lg-2"></div>
+        <div className='flex flex-row items-center justify-between'>
+          <Button type='link' className='!px-1 hover:!bg-transparent hover:!text-dark'>Forgot Password?</Button>
+          <Button>Login</Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
